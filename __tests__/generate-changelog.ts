@@ -1,8 +1,4 @@
-import {
-  Changelog,
-  generateChangelog,
-  Release
-} from '../src/generate-changelog'
+import { Changelog, generateChangelog } from '../src/generate-changelog'
 
 const firstCommit = 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f'
 
@@ -48,10 +44,13 @@ describe('generate changelog', () => {
   })
 })
 
-function createChangelog(releases: Release[]): Changelog {
+function createChangelog(releases: Changelog['releases']): Changelog {
   return {
-    repository: 'foo/bar',
-    firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',
+    repository: {
+      firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',
+      owner: 'foo',
+      repo: 'bar'
+    },
     releases
   }
 }

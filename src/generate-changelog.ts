@@ -2,13 +2,17 @@ import { Content, Root } from 'mdast'
 import * as createProcessor from 'unified'
 import * as stringify from 'remark-stringify'
 
+import { Release, RepositoryConfig, SerializedRelease } from './release'
+
+export { SerializedRelease }
+
 export function generateChangelog(changelog: Changelog): string {
   return createProcessor()
     .use(stringify)
     .stringify(generateAst(changelog))
 }
 
-function generateAst({ firstCommit, repository, releases }: Changelog): Root {
+function generateAst({ repository, releases }: Changelog): Root {
   return {
     type: 'root',
     children: [...generateHeader(), ...generateReleases()]
@@ -40,8 +44,9 @@ function generateAst({ firstCommit, repository, releases }: Changelog): Root {
   }
 
   function generateReleases(): Content[] {
-    const { acc } = releases.reduce<ReleasesAcc>(generateRelease, { acc: [] })
-    return acc
+    return releases
+      .map(release => new Release(release, repository))
+      .reduce<ReleasesAcc>(generateRelease, { acc: [] }).acc
   }
 
   function generateRelease(
@@ -50,25 +55,7 @@ function generateAst({ firstCommit, repository, releases }: Changelog): Root {
   ): ReleasesAcc {
     return {
       previous: release,
-      acc: [
-        {
-          type: 'heading',
-          depth: 2,
-          children: [
-            {
-              type: 'link',
-              url: compareUrl(previous, release),
-              children: [
-                {
-                  type: 'text',
-                  value: releaseLabel(release)
-                }
-              ]
-            }
-          ]
-        },
-        ...acc
-      ]
+      acc: [...release.toMarkdown(previous), ...acc]
     }
   }
 
@@ -76,28 +63,9 @@ function generateAst({ firstCommit, repository, releases }: Changelog): Root {
     previous?: Release
     acc: Content[]
   }
-
-  function compareUrl(previous: Release | undefined, current: Release): string {
-    const from = (previous && previous.tagName) || firstCommit
-    const to = current.tagName || 'HEAD'
-
-    return `https://github.com/${repository}/compare/${from}..${to}`
-  }
-}
-
-function releaseLabel(release: Release): string {
-  return release.name || release.tagName || 'Unreleased'
 }
 
 export interface Changelog {
-  firstCommit: string
-  repository: string
-  releases: Release[]
-}
-
-export interface Release {
-  name?: string
-  tagName?: string
-  draft?: boolean
-  prerelease?: boolean
+  releases: SerializedRelease[]
+  repository: RepositoryConfig
 }
