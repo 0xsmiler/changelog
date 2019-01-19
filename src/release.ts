@@ -1,6 +1,6 @@
 import { BlockContent, Content, ListItem, PhrasingContent, Root } from 'mdast'
-import * as parse from 'remark-parse'
-import * as createProcessor from 'unified'
+import parse from 'remark-parse'
+import createProcessor from 'unified'
 
 enum Section {
   BreakingChanges = 'breakingChanges',

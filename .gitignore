@@ -60,3 +60,6 @@ typings/
 # next.js build output
 .next
 
+# @splish-me/microbundle
+dist/
+.rts2_cache*/

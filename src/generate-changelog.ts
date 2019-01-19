@@ -1,7 +1,7 @@
 import { Content, Root } from 'mdast'
-import * as prettier from 'prettier'
-import * as stringify from 'remark-stringify'
-import * as createProcessor from 'unified'
+import prettier from 'prettier'
+import stringify from 'remark-stringify'
+import createProcessor from 'unified'
 
 import { Release, RepositoryConfig, SerializedRelease } from './release'
 

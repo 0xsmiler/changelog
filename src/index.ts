@@ -1,5 +1,5 @@
-import * as git from 'nodegit'
-import * as path from 'path'
+import git from 'nodegit'
+import path from 'path'
 
 import {
   generateChangelog as generate,
@@ -17,7 +17,7 @@ export async function generateChangelog(
   } = {}
 ) {
   try {
-    const repository = await git.Repository.open(path.join(__dirname, '..'))
+    const repository = await git.Repository.open(process.cwd())
     const origin = await repository.getRemote(remote)
     const master = await repository.getBranchCommit(branch)
     const url = origin.url()
@@ -46,7 +46,3 @@ export async function generateChangelog(
     return ''
   }
 }
-
-generateChangelog([]).then(ret => {
-  console.log(ret)
-})

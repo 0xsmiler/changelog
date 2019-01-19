@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "declaration": true,
     "declarationMap": true,
-    "module": "commonjs",
+    "esModuleInterop": true,
+    "module": "es2015",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src"]
+  "include": ["__tests__", "src"]
 }
