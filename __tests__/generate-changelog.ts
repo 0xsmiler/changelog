@@ -69,7 +69,8 @@ describe('generate changelog', () => {
       {
         name: 'Initial release',
         tagName: '0.0.0',
-        date: '2019-01-01'
+        date: '2019-01-01',
+        yanked: true
       },
       {
         tagName: '1.0.0',
@@ -86,7 +87,7 @@ describe('generate changelog', () => {
       '',
       `## [1.0.0](https://github.com/foo/bar/compare/0.0.0..1.0.0) - January 12, 2019`,
       '',
-      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019`
+      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019 \\[YANKED]`
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })

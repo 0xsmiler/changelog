@@ -58,17 +58,37 @@ export class Release {
               }
             ]
           },
-          ...(this.date
-            ? [
-                {
-                  type: 'text',
-                  value: ` - ${this.date}`
-                } as PhrasingContent
-              ]
-            : [])
+          ...date(this.date),
+          ...yanked(this.release.yanked)
         ]
       }
     ]
+
+    function date(date?: string): PhrasingContent[] {
+      if (!date) {
+        return []
+      }
+
+      return [
+        {
+          type: 'text',
+          value: ` - ${date}`
+        }
+      ]
+    }
+
+    function yanked(yanked?: boolean): PhrasingContent[] {
+      if (!yanked) {
+        return []
+      }
+
+      return [
+        {
+          type: 'text',
+          value: ' [YANKED]'
+        }
+      ]
+    }
   }
 
   private body(): Content[] {
@@ -122,7 +142,6 @@ export class Release {
           }
         })
       }
-      // ...entries.map((entry))
     ]
   }
 
@@ -170,6 +189,7 @@ export type SerializedRelease = {
   tagName?: string
   date?: string
   prerelease?: boolean
+  yanked?: boolean
   description?: string
 } & Partial<Record<Section, Entry[]>>
 
