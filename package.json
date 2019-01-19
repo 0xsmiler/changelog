@@ -20,7 +20,7 @@
     "deploy-commit": "git commit -am \"chore: release $npm_package_version\"",
     "deploy-tag": "git tag --force $npm_package_version",
     "predeploy": "npm-run-all --sequential format build changelog deploy-commit deploy-tag",
-    "deploy": "yarn publish"
+    "deploy": "yarn publish --new-version $npm_package_version"
   },
   "dependencies": {
     "nodegit": "^0.24.0",
