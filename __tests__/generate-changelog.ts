@@ -68,10 +68,12 @@ describe('generate changelog', () => {
     const changelog = createChangelog([
       {
         name: 'Initial release',
-        tagName: '0.0.0'
+        tagName: '0.0.0',
+        date: '2019-01-01'
       },
       {
-        tagName: '1.0.0'
+        tagName: '1.0.0',
+        date: '2019-01-12'
       },
       {}
     ])
@@ -82,9 +84,9 @@ describe('generate changelog', () => {
       '',
       `## [Unreleased](https://github.com/foo/bar/compare/1.0.0..HEAD)`,
       '',
-      `## [1.0.0](https://github.com/foo/bar/compare/0.0.0..1.0.0)`,
+      `## [1.0.0](https://github.com/foo/bar/compare/0.0.0..1.0.0) - January 12, 2019`,
       '',
-      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0)`
+      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019`
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })

@@ -1,4 +1,4 @@
-import { BlockContent, Content, ListItem, Root } from 'mdast'
+import { BlockContent, Content, ListItem, PhrasingContent, Root } from 'mdast'
 import * as parse from 'remark-parse'
 import * as createProcessor from 'unified'
 
@@ -26,6 +26,18 @@ export class Release {
     return this.release.tagName || 'HEAD'
   }
 
+  public get date(): string {
+    if (!this.release.date) {
+      return ''
+    }
+
+    return new Date(this.release.date).toLocaleDateString('en', {
+      year: 'numeric',
+      day: 'numeric',
+      month: 'long'
+    })
+  }
+
   public toMarkdown(previous?: Release): Content[] {
     return [...this.header(previous), ...this.body()]
   }
@@ -45,7 +57,15 @@ export class Release {
                 value: this.name
               }
             ]
-          }
+          },
+          ...(this.date
+            ? [
+                {
+                  type: 'text',
+                  value: ` - ${this.date}`
+                } as PhrasingContent
+              ]
+            : [])
         ]
       }
     ]
@@ -148,7 +168,7 @@ export class Release {
 export type SerializedRelease = {
   name?: string
   tagName?: string
-  draft?: boolean
+  date?: string
   prerelease?: boolean
   description?: string
 } & Partial<Record<Section, Entry[]>>
