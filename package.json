@@ -13,6 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "nodegit": "^0.24.0",
     "prettier": "^1.0.0",
     "remark": "^10.0.0",
     "unified": "^7.0.0"
@@ -20,8 +21,10 @@
   "devDependencies": {
     "@types/jest": "^23.0.0",
     "@types/mdast": "^3.0.0",
+    "@types/nodegit": "^0.22.7",
     "jest": "^23.0.0",
     "ts-jest": "^23.0.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.0"
   }
 }

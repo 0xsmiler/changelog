@@ -2,10 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "strict": true,
     "target": "esnext"
-  }
+  },
+  "include": ["src"]
 }
