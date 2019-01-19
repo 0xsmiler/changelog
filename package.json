@@ -12,9 +12,13 @@
     "format": "prettier --write \"{{__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "test": "jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "remark": "^10.0.0",
+    "unified": "^7.0.0"
+  },
   "devDependencies": {
     "@types/jest": "^23.0.0",
+    "@types/mdast": "^3.0.0",
     "jest": "^23.0.0",
     "prettier": "^1.0.0",
     "ts-jest": "^23.0.0",
