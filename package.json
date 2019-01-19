@@ -1,0 +1,18 @@
+{
+  "name": "@splish-me/changelog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/splish/changelog",
+  "bugs": {
+    "url": "https://github.com/splish/changelog/issues"
+  },
+  "license": "MIT",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "repository": "splish/changelog",
+  "scripts": {
+    "format": "prettier --write \"{{__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^1.0.0"
+  }
+}
