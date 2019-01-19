@@ -12,20 +12,64 @@ describe('generate changelog', () => {
     expect(generateChangelog(createChangelog([]))).toEqual(expected)
   })
 
-  test('unreleased changes', () => {
-    const changelog = createChangelog([{}])
+  test('unreleased changes w/ sections', () => {
+    const changelog = createChangelog([
+      {
+        description: 'You can read more about this release at our blog.',
+        breakingChanges: [
+          'Drop support for Internet Explorer 9',
+          'And also Internet Explorer 8'
+        ],
+        added: ['Added some fancy new feature'],
+        deprecated: ['Deprecated `foo`. Use `fooAsync` instead'],
+        removed: ['Removed entry for Internet Explorer'],
+        security: ['Updated dependencies with security issues'],
+        internal: ['Generate changelog with @splish-me/changelog']
+      }
+    ])
     const expected = join([
       '# Changelog',
       '',
       'All notable changes to this project will be documented in this file.',
       '',
-      `## [Unreleased](https://github.com/foo/bar/compare/${firstCommit}..HEAD)`
+      `## [Unreleased](https://github.com/foo/bar/compare/${firstCommit}..HEAD)`,
+      '',
+      'You can read more about this release at our blog.',
+      '',
+      '### Breaking Changes',
+      '',
+      '- Drop support for Internet Explorer 9',
+      '- And also Internet Explorer 8',
+      '',
+      '### Added',
+      '',
+      '- Added some fancy new feature',
+      '',
+      '### Deprecated',
+      '',
+      '- Deprecated `foo`. Use `fooAsync` instead',
+      '',
+      '### Removed',
+      '',
+      '- Removed entry for Internet Explorer',
+      '',
+      '### Security',
+      '',
+      '- Updated dependencies with security issues',
+      '',
+      '### Internal',
+      '',
+      '- Generate changelog with @splish-me/changelog'
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })
 
   test('released changes', () => {
     const changelog = createChangelog([
+      {
+        name: 'Initial release',
+        tagName: '0.0.0'
+      },
       {
         tagName: '1.0.0'
       },
@@ -38,7 +82,9 @@ describe('generate changelog', () => {
       '',
       `## [Unreleased](https://github.com/foo/bar/compare/1.0.0..HEAD)`,
       '',
-      `## [1.0.0](https://github.com/foo/bar/compare/${firstCommit}..1.0.0)`
+      `## [1.0.0](https://github.com/foo/bar/compare/0.0.0..1.0.0)`,
+      '',
+      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0)`
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })

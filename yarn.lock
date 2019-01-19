@@ -23,7 +23,7 @@
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.13.tgz#c81484b6f4ca007bb09887ed15ecb3286d58f928"
   integrity sha512-ePl4l+7dLLmCucIwgQHAgjiepY++qcI6nb8eAwGNkB6OxmTe3Z9rQU3rSpomqu42PCCnlThZbOoxsf+qylJsLA==
 
-"@types/mdast@^3.0.1":
+"@types/mdast@^3.0.0":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.1.tgz#57e15b4679385d5e9fa6b9827e4ff48b743e4a28"
   integrity sha512-uXoBWVbGdqS7IhgM6J4khDm+A7ozyy20nhZ1F0SVdkLlYObcaweCSeJG/vuCRnAQL/qjwhj5JK9QymoOSx5QVA==
@@ -3703,7 +3703,7 @@ unherit@^1.0.4:
     inherits "^2.0.1"
     xtend "^4.0.1"
 
-unified@^7.0.0, unified@^7.1.0:
+unified@^7.0.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-7.1.0.tgz#5032f1c1ee3364bd09da12e27fdd4a7553c7be13"
   integrity sha512-lbk82UOIGuCEsZhPj8rNAkXSDXd6p0QLzIuSsCdxrqnqU56St4eyOB+AlXsVgVeRmetPTYydIuvFfpDIed8mqw==

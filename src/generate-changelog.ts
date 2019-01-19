@@ -1,15 +1,18 @@
 import { Content, Root } from 'mdast'
-import * as createProcessor from 'unified'
+import * as prettier from 'prettier'
 import * as stringify from 'remark-stringify'
+import * as createProcessor from 'unified'
 
 import { Release, RepositoryConfig, SerializedRelease } from './release'
 
 export { SerializedRelease }
 
 export function generateChangelog(changelog: Changelog): string {
-  return createProcessor()
+  const content = createProcessor()
     .use(stringify)
     .stringify(generateAst(changelog))
+
+  return prettier.format(content, { parser: 'markdown' })
 }
 
 function generateAst({ repository, releases }: Changelog): Root {
