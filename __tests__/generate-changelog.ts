@@ -17,11 +17,7 @@ describe('generate changelog', () => {
   })
 
   test('unreleased changes', () => {
-    const changelog = createChangelog([
-      {
-        name: 'Unreleased'
-      }
-    ])
+    const changelog = createChangelog([{}])
     const expected = join([
       '# Changelog',
       '',
@@ -37,9 +33,7 @@ describe('generate changelog', () => {
       {
         tagName: '1.0.0'
       },
-      {
-        name: 'Unreleased'
-      }
+      {}
     ])
     const expected = join([
       '# Changelog',

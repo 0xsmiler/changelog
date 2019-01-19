@@ -86,7 +86,7 @@ function generateAst({ firstCommit, repository, releases }: Changelog): Root {
 }
 
 function releaseLabel(release: Release): string {
-  return (release as NamedRelease).name || (release as TaggedRelease).tagName
+  return release.name || release.tagName || 'Unreleased'
 }
 
 export interface Changelog {
@@ -95,17 +95,7 @@ export interface Changelog {
   releases: Release[]
 }
 
-export type Release = NamedRelease | TaggedRelease
-
-interface NamedRelease extends AbstractRelease {
-  name: string
-}
-
-interface TaggedRelease extends AbstractRelease {
-  tagName: string
-}
-
-interface AbstractRelease {
+export interface Release {
   name?: string
   tagName?: string
   draft?: boolean
