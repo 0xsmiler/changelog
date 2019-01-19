@@ -14,7 +14,7 @@ async function exec(): Promise<void> {
   const content = await generateChangelog([
     {
       tagName: '0.1.0',
-      date: '2019-01-19',
+      date: '2019-01-20',
       description: 'Initial working release'
     }
   ])
