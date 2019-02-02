@@ -16,6 +16,13 @@ async function exec(): Promise<void> {
       tagName: '0.1.0',
       date: '2019-01-20',
       description: 'Initial working release'
+    },
+    {
+      tagName: '0.1.1',
+      date: '2019-02-02',
+      added: [
+        'Add section `Changed`'
+      ]
     }
   ])
 

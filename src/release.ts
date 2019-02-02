@@ -5,6 +5,7 @@ import createProcessor from 'unified'
 enum Section {
   BreakingChanges = 'breakingChanges',
   Added = 'added',
+  Changed = 'changed',
   Deprecated = 'deprecated',
   Removed = 'removed',
   Fixed = 'fixed',
@@ -157,6 +158,7 @@ export class Release {
   static sections: Section[] = [
     Section.BreakingChanges,
     Section.Added,
+    Section.Changed,
     Section.Deprecated,
     Section.Removed,
     Section.Fixed,
@@ -170,6 +172,8 @@ export class Release {
         return 'Breaking Changes'
       case Section.Added:
         return 'Added'
+      case Section.Changed:
+        return 'Changed'
       case Section.Deprecated:
         return 'Deprecated'
       case Section.Removed:

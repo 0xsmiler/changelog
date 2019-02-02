@@ -21,6 +21,7 @@ describe('generate changelog', () => {
           'And also Internet Explorer 8'
         ],
         added: ['Added some fancy new feature'],
+        changed: ['Changed stuff'],
         deprecated: ['Deprecated `foo`. Use `fooAsync` instead'],
         removed: ['Removed entry for Internet Explorer'],
         security: ['Updated dependencies with security issues'],
@@ -44,6 +45,10 @@ describe('generate changelog', () => {
       '### Added',
       '',
       '- Added some fancy new feature',
+      '',
+      '### Changed',
+      '',
+      '- Changed stuff',
       '',
       '### Deprecated',
       '',
