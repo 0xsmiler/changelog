@@ -20,9 +20,12 @@ async function exec(): Promise<void> {
     {
       tagName: '0.1.1',
       date: '2019-02-02',
-      added: [
-        'Add section `Changed`'
-      ]
+      added: ['Add section `Changed`']
+    },
+    {
+      tagName: '0.1.2',
+      date: '2019-02-08',
+      fixed: ['Move `@types/mdast` to dependencies']
     }
   ])
 

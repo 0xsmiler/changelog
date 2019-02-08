@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/changelog",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/splish/changelog",
   "bugs": {
     "url": "https://github.com/splish/changelog/issues"
@@ -23,6 +23,7 @@
     "deploy": "yarn publish --new-version $npm_package_version"
   },
   "dependencies": {
+    "@types/mdast": "^3.0.0",
     "nodegit": "^0.24.0",
     "prettier": "^1.0.0",
     "remark-parse": "^6.0.0",
@@ -32,7 +33,6 @@
   "devDependencies": {
     "@splish-me/microbundle": "^0.9.0",
     "@types/jest": "^23.0.0",
-    "@types/mdast": "^3.0.0",
     "@types/nodegit": "^0.22.0",
     "jest": "^23.0.0",
     "npm-run-all": "^4.0.0",

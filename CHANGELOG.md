@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2](https://github.com/splish/changelog/compare/0.1.1..0.1.2) - February 8, 2019
+
+### Fixed
+
+- Move `@types/mdast` to dependencies
+
 ## [0.1.1](https://github.com/splish/changelog/compare/0.1.0..0.1.1) - February 2, 2019
 
 ### Added
