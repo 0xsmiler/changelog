@@ -70,7 +70,7 @@ describe('generate changelog', () => {
   })
 
   test('scoped unreleased changes w/ sections', () => {
-    const changelog = createChangelog<"main" | "foo">([
+    const changelog = createChangelog<'main' | 'foo'>([
       {
         breakingChanges: [
           ['main', 'Drop support for Internet Explorer 9'],
@@ -124,7 +124,9 @@ describe('generate changelog', () => {
   })
 })
 
-function createChangelog<Scope = undefined>(releases: Changelog<Scope>['releases']): Changelog<Scope> {
+function createChangelog<Scope = undefined>(
+  releases: Changelog<Scope>['releases']
+): Changelog<Scope> {
   return {
     repository: {
       firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3](https://github.com/splish/changelog/compare/0.1.2..0.1.3) - June 5, 2019
+
+### Added
+
+- Add scoped changelog entries
+
 ## [0.1.2](https://github.com/splish/changelog/compare/0.1.1..0.1.2) - February 8, 2019
 
 ### Fixed

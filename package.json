@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/changelog",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/splish/changelog",
   "bugs": {
     "url": "https://github.com/splish/changelog/issues"
@@ -14,7 +14,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "splish-microbundle --target=node --format cjs",
-    "changelog": "ts-node --compilerOptions '{\"module\": \"commonjs\"}' scripts/changelog",
+    "changelog": "ts-node --compiler-options '{\"module\": \"commonjs\"}' scripts/changelog",
     "format": "prettier --write \"{{__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "lint": "tsc --noEmit",
     "test": "jest",

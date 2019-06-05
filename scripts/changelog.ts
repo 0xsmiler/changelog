@@ -26,6 +26,11 @@ async function exec(): Promise<void> {
       tagName: '0.1.2',
       date: '2019-02-08',
       fixed: ['Move `@types/mdast` to dependencies']
+    },
+    {
+      tagName: '0.1.3',
+      date: '2019-06-05',
+      added: ['Add scoped changelog entries']
     }
   ])
 
