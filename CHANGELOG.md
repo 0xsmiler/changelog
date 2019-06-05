@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4](https://github.com/splish/changelog/compare/0.1.3..0.1.4) - June 5, 2019
+
+### Fixed
+
+- Handle remote urls without optional .git
+
 ## [0.1.3](https://github.com/splish/changelog/compare/0.1.2..0.1.3) - June 5, 2019
 
 ### Added

@@ -31,6 +31,11 @@ async function exec(): Promise<void> {
       tagName: '0.1.3',
       date: '2019-06-05',
       added: ['Add scoped changelog entries']
+    },
+    {
+      tagName: '0.1.4',
+      date: '2019-06-05',
+      fixed: ['Handle remote urls without optional .git']
     }
   ])
 
