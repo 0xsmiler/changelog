@@ -20,8 +20,7 @@ export async function generateChangelog<Scope>(
     const repository = await git.Repository.open(process.cwd())
     const origin = await repository.getRemote(remote)
     const master = await repository.getBranchCommit(branch)
-    const url = origin.url()
-    const match = url.match('([^/:]+)/([^/:]+).git')
+    const match = matchRemoteUrl(origin.url())
 
     let commit = master
 
@@ -37,12 +36,29 @@ export async function generateChangelog<Scope>(
       releases,
       repository: {
         firstCommit: commit.sha(),
-        owner: match[1],
-        repo: match[2]
+        ...match
       }
     })
   } catch (e) {
     console.log(e)
     return ''
+  }
+}
+
+export function matchRemoteUrl(url: string) {
+  /**
+   * Matches an string that consists of
+   * - An arbitrary prefix (that ends with : (for SSH) or / (for HTTPS))
+   * - [1] Repository owner (next part without : or /)
+   * - [2] A forward slash /
+   * - [3] Repository name (next part without : or / and without trailing .git)
+   * - [4] Optionally .git
+   *                               --[1]--|[2]|------[3]--------|---[4]---|
+   */
+  const match = url.match(/([^\/:]+)\/([^\/:]+(?<!\.git))(\.git)?$/)
+  if (!match) return null
+  return {
+    owner: match[1],
+    repo: match[2]
   }
 }

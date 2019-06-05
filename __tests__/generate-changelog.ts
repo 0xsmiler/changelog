@@ -1,4 +1,5 @@
 import { Changelog, generateChangelog } from '../src/generate-changelog'
+import { matchRemoteUrl } from '../src'
 
 const firstCommit = 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f'
 
@@ -124,6 +125,35 @@ describe('generate changelog', () => {
   })
 })
 
+describe('match remote url', () => {
+  test('SSH', () => {
+    expect(matchRemoteUrl('git@github.com:splish/changelog.git')).toEqual({
+      owner: 'splish',
+      repo: 'changelog'
+    })
+  })
+
+  test('SSH (without git)', () => {
+    expect(matchRemoteUrl('git@github.com:splish/changelog')).toEqual({
+      owner: 'splish',
+      repo: 'changelog'
+    })
+  })
+
+  test('HTTPS', () => {
+    expect(matchRemoteUrl('https://github.com/splish/changelog.git')).toEqual({
+      owner: 'splish',
+      repo: 'changelog'
+    })
+  })
+
+  test('HTTP (without git)', () => {
+    expect(matchRemoteUrl('https://github.com/splish/changelog')).toEqual({
+      owner: 'splish',
+      repo: 'changelog'
+    })
+  })
+})
 function createChangelog<Scope = undefined>(
   releases: Changelog<Scope>['releases']
 ): Changelog<Scope> {
