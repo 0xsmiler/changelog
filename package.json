@@ -16,6 +16,7 @@
     "build": "splish-microbundle --target=node --format cjs",
     "changelog": "ts-node --compilerOptions '{\"module\": \"commonjs\"}' scripts/changelog",
     "format": "prettier --write \"{{__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
+    "lint": "tsc --noEmit",
     "test": "jest",
     "deploy-commit": "git commit -am \"chore: release $npm_package_version\"",
     "deploy-tag": "git tag --force $npm_package_version",
@@ -32,13 +33,13 @@
   },
   "devDependencies": {
     "@splish-me/microbundle": "^0.9.0",
-    "@types/jest": "^23.0.0",
-    "@types/nodegit": "^0.22.0",
-    "jest": "^23.0.0",
+    "@types/jest": "^24.0.0",
+    "@types/nodegit": "^0.24.0",
+    "jest": "^24.0.0",
     "npm-run-all": "^4.0.0",
     "rimraf": "^2.0.0",
-    "ts-jest": "^23.0.0",
-    "ts-node": "^7.0.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.0",
     "typescript": "^3.0.0"
   },
   "publishConfig": {

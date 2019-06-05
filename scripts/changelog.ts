@@ -11,7 +11,7 @@ exec().then(() => {
 })
 
 async function exec(): Promise<void> {
-  const content = await generateChangelog([
+  const content = await generateChangelog<undefined>([
     {
       tagName: '0.1.0',
       date: '2019-01-20',

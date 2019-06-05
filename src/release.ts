@@ -13,9 +13,9 @@ enum Section {
   Internal = 'internal'
 }
 
-export class Release {
+export class Release<Scope> {
   constructor(
-    private release: SerializedRelease,
+    private release: SerializedRelease<Scope>,
     private repository: RepositoryConfig
   ) {}
 
@@ -39,11 +39,11 @@ export class Release {
     })
   }
 
-  public toMarkdown(previous?: Release): Content[] {
+  public toMarkdown(previous?: Release<Scope>): Content[] {
     return [...this.header(previous), ...this.body()]
   }
 
-  private header(previous?: Release): Content[] {
+  private header(previous?: Release<Scope>): Content[] {
     return [
       {
         type: 'heading',
@@ -113,7 +113,7 @@ export class Release {
   }
 
   private section = (section: Section): Content[] => {
-    const entries: Entry[] = this.release[section] || []
+    const entries: Entry<Scope>[] = this.release[section] || []
 
     if (entries.length === 0) {
       return []
@@ -133,9 +133,12 @@ export class Release {
       {
         type: 'list',
         children: entries.map<ListItem>(entry => {
+          const isString = typeof entry === 'string'
+          const description = isString ? entry : `**${entry[0]}**. ${entry[1]}`
+
           const children = (createProcessor()
             .use(parse)
-            .parse(entry) as Root).children as BlockContent[]
+            .parse(description) as Root).children as BlockContent[]
 
           return {
             type: 'listItem',
@@ -146,7 +149,7 @@ export class Release {
     ]
   }
 
-  private compareUrl(previous?: Release): string {
+  private compareUrl(previous?: Release<Scope>): string {
     const from = previous ? previous.tagName : this.repository.firstCommit
     const to = this.tagName
 
@@ -188,14 +191,14 @@ export class Release {
   }
 }
 
-export type SerializedRelease = {
+export type SerializedRelease<Scope> = {
   name?: string
   tagName?: string
   date?: string
   prerelease?: boolean
   yanked?: boolean
   description?: string
-} & Partial<Record<Section, Entry[]>>
+} & Partial<Record<Section, Entry<Scope>[]>>
 
 export interface RepositoryConfig {
   firstCommit: string
@@ -203,4 +206,4 @@ export interface RepositoryConfig {
   repo: string
 }
 
-type Entry = string
+type Entry<Scope> = string | [Scope, string]

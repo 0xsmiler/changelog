@@ -69,6 +69,32 @@ describe('generate changelog', () => {
     expect(generateChangelog(changelog)).toEqual(expected)
   })
 
+  test('scoped unreleased changes w/ sections', () => {
+    const changelog = createChangelog<"main" | "foo">([
+      {
+        breakingChanges: [
+          ['main', 'Drop support for Internet Explorer 9'],
+          ['foo', 'Something else'],
+          ['main', 'Another main']
+        ]
+      }
+    ])
+    const expected = join([
+      '# Changelog',
+      '',
+      'All notable changes to this project will be documented in this file.',
+      '',
+      `## [Unreleased](https://github.com/foo/bar/compare/${firstCommit}..HEAD)`,
+      '',
+      '### Breaking Changes',
+      '',
+      '- **main**. Drop support for Internet Explorer 9',
+      '- **foo**. Something else',
+      '- **main**. Another main'
+    ])
+    expect(generateChangelog(changelog)).toEqual(expected)
+  })
+
   test('released changes', () => {
     const changelog = createChangelog([
       {
@@ -98,7 +124,7 @@ describe('generate changelog', () => {
   })
 })
 
-function createChangelog(releases: Changelog['releases']): Changelog {
+function createChangelog<Scope = undefined>(releases: Changelog<Scope>['releases']): Changelog<Scope> {
   return {
     repository: {
       firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',

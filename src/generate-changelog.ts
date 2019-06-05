@@ -7,7 +7,7 @@ import { Release, RepositoryConfig, SerializedRelease } from './release'
 
 export { SerializedRelease }
 
-export function generateChangelog(changelog: Changelog): string {
+export function generateChangelog<Scope>(changelog: Changelog<Scope>): string {
   const content = createProcessor()
     .use(stringify)
     .stringify(generateAst(changelog))
@@ -15,7 +15,7 @@ export function generateChangelog(changelog: Changelog): string {
   return prettier.format(content, { parser: 'markdown' })
 }
 
-function generateAst({ repository, releases }: Changelog): Root {
+function generateAst<Scope>({ repository, releases }: Changelog<Scope>): Root {
   return {
     type: 'root',
     children: [...generateHeader(), ...generateReleases()]
@@ -54,7 +54,7 @@ function generateAst({ repository, releases }: Changelog): Root {
 
   function generateRelease(
     { previous, acc }: ReleasesAcc,
-    release: Release
+    release: Release<Scope>
   ): ReleasesAcc {
     return {
       previous: release,
@@ -63,12 +63,12 @@ function generateAst({ repository, releases }: Changelog): Root {
   }
 
   interface ReleasesAcc {
-    previous?: Release
+    previous?: Release<Scope>
     acc: Content[]
   }
 }
 
-export interface Changelog {
-  releases: SerializedRelease[]
+export interface Changelog<Scope> {
+  releases: SerializedRelease<Scope>[]
   repository: RepositoryConfig
 }

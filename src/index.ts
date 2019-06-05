@@ -6,8 +6,8 @@ import {
   SerializedRelease
 } from './generate-changelog'
 
-export async function generateChangelog(
-  releases: SerializedRelease[],
+export async function generateChangelog<Scope>(
+  releases: SerializedRelease<Scope>[],
   {
     branch = 'master',
     remote = 'origin'
@@ -33,7 +33,7 @@ export async function generateChangelog(
       return ''
     }
 
-    return generate({
+    return generate<Scope>({
       releases,
       repository: {
         firstCommit: commit.sha(),
