@@ -153,9 +153,7 @@ export class Release<Scope> {
     const from = previous ? previous.tagName : this.repository.firstCommit
     const to = this.tagName
 
-    return `https://github.com/${this.repository.owner}/${
-      this.repository.repo
-    }/compare/${from}..${to}`
+    return `https://github.com/${this.repository.owner}/${this.repository.repo}/compare/${from}..${to}`
   }
 
   static sections: Section[] = [

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5](https://github.com/splish/changelog/compare/0.1.4..0.1.5) - February 14, 2020
+
+### Fixed
+
+- Update dependencies to support Node v12
+
 ## [0.1.4](https://github.com/splish/changelog/compare/0.1.3..0.1.4) - June 5, 2019
 
 ### Fixed
