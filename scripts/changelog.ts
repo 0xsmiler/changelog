@@ -36,6 +36,11 @@ async function exec(): Promise<void> {
       tagName: '0.1.4',
       date: '2019-06-05',
       fixed: ['Handle remote urls without optional .git']
+    },
+    {
+      tagName: '0.1.5',
+      date: '2020-02-14',
+      fixed: ['Update dependencies to support Node v12']
     }
   ])
 
