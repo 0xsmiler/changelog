@@ -41,6 +41,7 @@ describe('generate changelog', () => {
       '### Breaking Changes',
       '',
       '- Drop support for Internet Explorer 9',
+      '',
       '- And also Internet Explorer 8',
       '',
       '### Added',
@@ -90,7 +91,9 @@ describe('generate changelog', () => {
       '### Breaking Changes',
       '',
       '- **main**. Drop support for Internet Explorer 9',
+      '',
       '- **foo**. Something else',
+      '',
       '- **main**. Another main',
     ])
     expect(generateChangelog(changelog)).toEqual(expected)

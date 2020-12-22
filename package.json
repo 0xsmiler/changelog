@@ -27,9 +27,9 @@
     "@types/mdast": "^3.0.0",
     "nodegit": "^0.27.0",
     "prettier": "^2.0.0",
-    "remark-parse": "^7.0.0",
-    "remark-stringify": "^7.0.0",
-    "unified": "^8.0.0"
+    "remark-parse": "^9.0.0",
+    "remark-stringify": "^9.0.0",
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.0",
