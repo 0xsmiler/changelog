@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "declaration": true,
-    "declarationMap": true,
     "esModuleInterop": true,
-    "module": "es2015",
+    "importHelpers": true,
+    "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
-  },
-  "include": ["__tests__", "src"]
+    "target": "es2019"
+  }
 }
