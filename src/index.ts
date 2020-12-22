@@ -3,14 +3,14 @@ import path from 'path'
 
 import {
   generateChangelog as generate,
-  SerializedRelease
+  SerializedRelease,
 } from './generate-changelog'
 
 export async function generateChangelog<Scope>(
   releases: SerializedRelease<Scope>[],
   {
     branch = 'master',
-    remote = 'origin'
+    remote = 'origin',
   }: {
     branch?: string
     remote?: string
@@ -36,8 +36,8 @@ export async function generateChangelog<Scope>(
       releases,
       repository: {
         firstCommit: commit.sha(),
-        ...match
-      }
+        ...match,
+      },
     })
   } catch (e) {
     console.log(e)
@@ -59,6 +59,6 @@ export function matchRemoteUrl(url: string) {
   if (!match) return null
   return {
     owner: match[1],
-    repo: match[2]
+    repo: match[2],
   }
 }

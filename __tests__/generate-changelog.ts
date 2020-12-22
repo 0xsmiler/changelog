@@ -8,7 +8,7 @@ describe('generate changelog', () => {
     const expected = join([
       '# Changelog',
       '',
-      'All notable changes to this project will be documented in this file.'
+      'All notable changes to this project will be documented in this file.',
     ])
     expect(generateChangelog(createChangelog([]))).toEqual(expected)
   })
@@ -19,15 +19,15 @@ describe('generate changelog', () => {
         description: 'You can read more about this release at our blog.',
         breakingChanges: [
           'Drop support for Internet Explorer 9',
-          'And also Internet Explorer 8'
+          'And also Internet Explorer 8',
         ],
         added: ['Added some fancy new feature'],
         changed: ['Changed stuff'],
         deprecated: ['Deprecated `foo`. Use `fooAsync` instead'],
         removed: ['Removed entry for Internet Explorer'],
         security: ['Updated dependencies with security issues'],
-        internal: ['Generate changelog with @splish-me/changelog']
-      }
+        internal: ['Generate changelog with @splish-me/changelog'],
+      },
     ])
     const expected = join([
       '# Changelog',
@@ -65,7 +65,7 @@ describe('generate changelog', () => {
       '',
       '### Internal',
       '',
-      '- Generate changelog with @splish-me/changelog'
+      '- Generate changelog with @splish-me/changelog',
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })
@@ -76,9 +76,9 @@ describe('generate changelog', () => {
         breakingChanges: [
           ['main', 'Drop support for Internet Explorer 9'],
           ['foo', 'Something else'],
-          ['main', 'Another main']
-        ]
-      }
+          ['main', 'Another main'],
+        ],
+      },
     ])
     const expected = join([
       '# Changelog',
@@ -91,7 +91,7 @@ describe('generate changelog', () => {
       '',
       '- **main**. Drop support for Internet Explorer 9',
       '- **foo**. Something else',
-      '- **main**. Another main'
+      '- **main**. Another main',
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })
@@ -102,13 +102,13 @@ describe('generate changelog', () => {
         name: 'Initial release',
         tagName: '0.0.0',
         date: '2019-01-01',
-        yanked: true
+        yanked: true,
       },
       {
         tagName: '1.0.0',
-        date: '2019-01-12'
+        date: '2019-01-12',
       },
-      {}
+      {},
     ])
     const expected = join([
       '# Changelog',
@@ -119,7 +119,7 @@ describe('generate changelog', () => {
       '',
       `## [1.0.0](https://github.com/foo/bar/compare/0.0.0..1.0.0) - January 12, 2019`,
       '',
-      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019 \\[YANKED]`
+      `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019 \\[YANKED]`,
     ])
     expect(generateChangelog(changelog)).toEqual(expected)
   })
@@ -129,28 +129,28 @@ describe('match remote url', () => {
   test('SSH', () => {
     expect(matchRemoteUrl('git@github.com:splish/changelog.git')).toEqual({
       owner: 'splish',
-      repo: 'changelog'
+      repo: 'changelog',
     })
   })
 
   test('SSH (without git)', () => {
     expect(matchRemoteUrl('git@github.com:splish/changelog')).toEqual({
       owner: 'splish',
-      repo: 'changelog'
+      repo: 'changelog',
     })
   })
 
   test('HTTPS', () => {
     expect(matchRemoteUrl('https://github.com/splish/changelog.git')).toEqual({
       owner: 'splish',
-      repo: 'changelog'
+      repo: 'changelog',
     })
   })
 
   test('HTTP (without git)', () => {
     expect(matchRemoteUrl('https://github.com/splish/changelog')).toEqual({
       owner: 'splish',
-      repo: 'changelog'
+      repo: 'changelog',
     })
   })
 })
@@ -161,9 +161,9 @@ function createChangelog<Scope = undefined>(
     repository: {
       firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',
       owner: 'foo',
-      repo: 'bar'
+      repo: 'bar',
     },
-    releases
+    releases,
   }
 }
 

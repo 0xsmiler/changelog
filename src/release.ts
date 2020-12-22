@@ -10,7 +10,7 @@ enum Section {
   Removed = 'removed',
   Fixed = 'fixed',
   Security = 'security',
-  Internal = 'internal'
+  Internal = 'internal',
 }
 
 export class Release<Scope> {
@@ -35,7 +35,7 @@ export class Release<Scope> {
     return new Date(this.release.date).toLocaleDateString('en', {
       year: 'numeric',
       day: 'numeric',
-      month: 'long'
+      month: 'long',
     })
   }
 
@@ -55,14 +55,14 @@ export class Release<Scope> {
             children: [
               {
                 type: 'text',
-                value: this.name
-              }
-            ]
+                value: this.name,
+              },
+            ],
           },
           ...date(this.date),
-          ...yanked(this.release.yanked)
-        ]
-      }
+          ...yanked(this.release.yanked),
+        ],
+      },
     ]
 
     function date(date?: string): PhrasingContent[] {
@@ -73,8 +73,8 @@ export class Release<Scope> {
       return [
         {
           type: 'text',
-          value: ` - ${date}`
-        }
+          value: ` - ${date}`,
+        },
       ]
     }
 
@@ -86,8 +86,8 @@ export class Release<Scope> {
       return [
         {
           type: 'text',
-          value: ' [YANKED]'
-        }
+          value: ' [YANKED]',
+        },
       ]
     }
   }
@@ -95,7 +95,7 @@ export class Release<Scope> {
   private body(): Content[] {
     return [
       ...this.description(),
-      ...([] as Content[]).concat(...Release.sections.map(this.section))
+      ...([] as Content[]).concat(...Release.sections.map(this.section)),
     ]
   }
 
@@ -107,8 +107,8 @@ export class Release<Scope> {
     return [
       {
         type: 'paragraph',
-        children: [{ type: 'text', value: this.release.description }]
-      }
+        children: [{ type: 'text', value: this.release.description }],
+      },
     ]
   }
 
@@ -126,13 +126,13 @@ export class Release<Scope> {
         children: [
           {
             type: 'text',
-            value: Release.sectionTitle(section)
-          }
-        ]
+            value: Release.sectionTitle(section),
+          },
+        ],
       },
       {
         type: 'list',
-        children: entries.map<ListItem>(entry => {
+        children: entries.map<ListItem>((entry) => {
           const isString = typeof entry === 'string'
           const description = isString ? entry : `**${entry[0]}**. ${entry[1]}`
 
@@ -142,10 +142,10 @@ export class Release<Scope> {
 
           return {
             type: 'listItem',
-            children
+            children,
           }
-        })
-      }
+        }),
+      },
     ]
   }
 
@@ -164,7 +164,7 @@ export class Release<Scope> {
     Section.Removed,
     Section.Fixed,
     Section.Security,
-    Section.Internal
+    Section.Internal,
   ]
 
   static sectionTitle(section: Section): string {

@@ -18,7 +18,7 @@ export function generateChangelog<Scope>(changelog: Changelog<Scope>): string {
 function generateAst<Scope>({ repository, releases }: Changelog<Scope>): Root {
   return {
     type: 'root',
-    children: [...generateHeader(), ...generateReleases()]
+    children: [...generateHeader(), ...generateReleases()],
   }
 
   function generateHeader(): Content[] {
@@ -29,9 +29,9 @@ function generateAst<Scope>({ repository, releases }: Changelog<Scope>): Root {
         children: [
           {
             type: 'text',
-            value: 'Changelog'
-          }
-        ]
+            value: 'Changelog',
+          },
+        ],
       },
       {
         type: 'paragraph',
@@ -39,16 +39,16 @@ function generateAst<Scope>({ repository, releases }: Changelog<Scope>): Root {
           {
             type: 'text',
             value:
-              'All notable changes to this project will be documented in this file.'
-          }
-        ]
-      }
+              'All notable changes to this project will be documented in this file.',
+          },
+        ],
+      },
     ]
   }
 
   function generateReleases(): Content[] {
     return releases
-      .map(release => new Release(release, repository))
+      .map((release) => new Release(release, repository))
       .reduce<ReleasesAcc>(generateRelease, { acc: [] }).acc
   }
 
@@ -58,7 +58,7 @@ function generateAst<Scope>({ repository, releases }: Changelog<Scope>): Root {
   ): ReleasesAcc {
     return {
       previous: release,
-      acc: [...release.toMarkdown(previous), ...acc]
+      acc: [...release.toMarkdown(previous), ...acc],
     }
   }
 
