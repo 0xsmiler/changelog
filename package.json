@@ -1,12 +1,12 @@
 {
-  "name": "@splish-me/changelog",
+  "name": "@inyono/changelog",
   "version": "0.1.5",
-  "homepage": "https://github.com/splish/changelog",
+  "homepage": "https://github.com/inyono/changelog",
   "bugs": {
-    "url": "https://github.com/splish/changelog/issues"
+    "url": "https://github.com/inyono/changelog/issues"
   },
   "license": "MIT",
-  "author": "Splish UG (haftungsbeschränkt)",
+  "author": "Jonas Keinholz <jonas@keinholz.dev>",
   "main": "dist/index.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
