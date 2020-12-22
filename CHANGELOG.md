@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.0](https://github.com/inyono/changelog/compare/0.1.5..0.2.0) - December 22, 2020
+## [0.2.1](https://github.com/inyono/changelog/compare/0.2.0..0.2.1) - December 22, 2020
 
 ### Breaking Changes
 
@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Update dependencies to support Node v14.
+
+## [0.2.0](https://github.com/inyono/changelog/compare/0.1.5..0.2.0) - December 22, 2020 \[YANKED]
 
 ## [0.1.5](https://github.com/inyono/changelog/compare/0.1.4..0.1.5) - February 14, 2020
 

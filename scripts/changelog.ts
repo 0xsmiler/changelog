@@ -45,6 +45,11 @@ async function exec(): Promise<void> {
     {
       tagName: '0.2.0',
       date: '2020-12-22',
+      yanked: true,
+    },
+    {
+      tagName: '0.2.1',
+      date: '2020-12-22',
       breakingChanges: ['Drop Node v10 support.'],
       added: ['Update dependencies to support Node v14.'],
     },
