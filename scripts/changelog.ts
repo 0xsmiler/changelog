@@ -42,6 +42,12 @@ async function exec(): Promise<void> {
       date: '2020-02-14',
       fixed: ['Update dependencies to support Node v12'],
     },
+    {
+      tagName: '0.2.0',
+      date: '2020-12-22',
+      breakingChanges: ['Drop Node v10 support.'],
+      added: ['Update dependencies to support Node v14.'],
+    },
   ])
 
   await writeFile(path.join(__dirname, '..', 'CHANGELOG.md'), content)
