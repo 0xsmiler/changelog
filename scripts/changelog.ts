@@ -54,6 +54,25 @@ async function exec(): Promise<void> {
         breakingChanges: ['Drop Node v10 support.'],
         added: ['Update dependencies to support Node v14.'],
       },
+      {
+        tagName: 'v0.3.0',
+        date: '2021-08-30',
+        breakingChanges: [
+          'Change default branch to `main`.',
+          `\`generateChangelog\` now accepts an configuration object instead of two arguments, i.e.:
+          
+\`\`\`js
+generateChangelog(releases, { branch, origin })
+// becomes
+generateChangelog({
+  releases,
+  branch,
+  origin
+})
+\`\`\`
+          `,
+        ],
+      },
     ],
   })
 

@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.3.0](https://github.com/inyono/changelog/compare/v0.2.1..v0.3.0) - August 30, 2021
+
+### Breaking Changes
+
+- Change default branch to `main`.
+
+- `generateChangelog` now accepts an configuration object instead of two arguments, i.e.:
+
+  ```js
+  generateChangelog(releases, { branch, origin })
+  // becomes
+  generateChangelog({
+    releases,
+    branch,
+    origin,
+  })
+  ```
+
 ## [v0.2.1](https://github.com/inyono/changelog/compare/v0.2.0..v0.2.1) - December 22, 2020
 
 ### Breaking Changes
