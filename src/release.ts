@@ -136,9 +136,9 @@ export class Release<Scope> {
           const isString = typeof entry === 'string'
           const description = isString ? entry : `**${entry[0]}**. ${entry[1]}`
 
-          const children = (createProcessor()
-            .use(parse)
-            .parse(description) as Root).children as BlockContent[]
+          const children = (
+            createProcessor().use(parse).parse(description) as Root
+          ).children as BlockContent[]
 
           return {
             type: 'listItem',
