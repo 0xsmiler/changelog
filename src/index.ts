@@ -1,21 +1,19 @@
 import git from 'nodegit'
-import path from 'path'
 
 import {
   generateChangelog as generate,
   SerializedRelease,
 } from './generate-changelog'
 
-export async function generateChangelog<Scope>(
-  releases: SerializedRelease<Scope>[],
-  {
-    branch = 'master',
-    remote = 'origin',
-  }: {
-    branch?: string
-    remote?: string
-  } = {}
-) {
+export async function generateChangelog<Scope>({
+  releases,
+  branch = 'main',
+  remote = 'origin',
+}: {
+  releases: SerializedRelease<Scope>[]
+  branch?: string
+  remote?: string
+}) {
   try {
     const repository = await git.Repository.open(process.cwd())
     const origin = await repository.getRemote(remote)

@@ -60,6 +60,11 @@ typings/
 # next.js build output
 .next
 
-# @splish-me/microbundle
-dist/
-.rts2_cache*/
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
