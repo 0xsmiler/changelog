@@ -1,5 +1,5 @@
-import { Changelog, generateChangelog } from '../src/generate-changelog'
-import { matchRemoteUrl } from '../src'
+import { Changelog } from '../src/generate-changelog'
+import { generateChangelog as generate } from '../src'
 
 const firstCommit = 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f'
 
@@ -10,11 +10,11 @@ describe('generate changelog', () => {
       '',
       'All notable changes to this project will be documented in this file.',
     ])
-    expect(generateChangelog(createChangelog([]))).toEqual(expected)
+    expect(generateChangelog([])).toEqual(expected)
   })
 
   test('unreleased changes w/ sections', () => {
-    const changelog = createChangelog([
+    const changelog = generateChangelog([
       {
         description: 'You can read more about this release at our blog.',
         breakingChanges: [
@@ -68,11 +68,11 @@ describe('generate changelog', () => {
       '',
       '- Generate changelog with @splish-me/changelog',
     ])
-    expect(generateChangelog(changelog)).toEqual(expected)
+    expect(changelog).toEqual(expected)
   })
 
   test('scoped unreleased changes w/ sections', () => {
-    const changelog = createChangelog<'main' | 'foo'>([
+    const changelog = generateChangelog<'main' | 'foo'>([
       {
         breakingChanges: [
           ['main', 'Drop support for Internet Explorer 9'],
@@ -96,11 +96,11 @@ describe('generate changelog', () => {
       '',
       '- **main**. Another main',
     ])
-    expect(generateChangelog(changelog)).toEqual(expected)
+    expect(changelog).toEqual(expected)
   })
 
   test('released changes', () => {
-    const changelog = createChangelog([
+    const changelog = generateChangelog([
       {
         name: 'Initial release',
         tagName: '0.0.0',
@@ -124,50 +124,21 @@ describe('generate changelog', () => {
       '',
       `## [Initial release](https://github.com/foo/bar/compare/${firstCommit}..0.0.0) - January 1, 2019 \\[YANKED]`,
     ])
-    expect(generateChangelog(changelog)).toEqual(expected)
+    expect(changelog).toEqual(expected)
   })
 })
 
-describe('match remote url', () => {
-  test('SSH', () => {
-    expect(matchRemoteUrl('git@github.com:splish/changelog.git')).toEqual({
-      owner: 'splish',
-      repo: 'changelog',
-    })
-  })
-
-  test('SSH (without git)', () => {
-    expect(matchRemoteUrl('git@github.com:splish/changelog')).toEqual({
-      owner: 'splish',
-      repo: 'changelog',
-    })
-  })
-
-  test('HTTPS', () => {
-    expect(matchRemoteUrl('https://github.com/splish/changelog.git')).toEqual({
-      owner: 'splish',
-      repo: 'changelog',
-    })
-  })
-
-  test('HTTP (without git)', () => {
-    expect(matchRemoteUrl('https://github.com/splish/changelog')).toEqual({
-      owner: 'splish',
-      repo: 'changelog',
-    })
-  })
-})
-function createChangelog<Scope = undefined>(
+function generateChangelog<Scope = undefined>(
   releases: Changelog<Scope>['releases']
-): Changelog<Scope> {
-  return {
+) {
+  return generate({
     repository: {
       firstCommit: 'bc6106e006b1633f5e6c15f6af2eef0443d8e81f',
       owner: 'foo',
       repo: 'bar',
     },
     releases,
-  }
+  })
 }
 
 function join(lines: string[]): string {

@@ -1,17 +1,19 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import * as util from 'util'
 
 import { generateChangelog } from '../src'
-
-const writeFile = util.promisify(fs.writeFile)
 
 exec().then(() => {
   console.log('done')
 })
 
 async function exec(): Promise<void> {
-  const content = await generateChangelog<undefined>({
+  const content = generateChangelog<undefined>({
+    repository: {
+      firstCommit: 'b5b9c087d461599e25080b9963a53c15fd72e9e6',
+      owner: 'inyono',
+      repo: 'changelog',
+    },
     releases: [
       {
         tagName: 'v0.1.0',
@@ -73,8 +75,37 @@ generateChangelog({
           `,
         ],
       },
+      {
+        tagName: 'v0.4.0',
+        date: '2022-01-09',
+        breakingChanges: [
+          'Drop Node v12 support.',
+          `\`generateChangelog\` now requires information about the GitHub repository, i.e.:
+          
+\`\`\`js
+generateChangelog({
+  releases,
+  branch,
+  origin
+})
+// becomes
+generateChangelog({
+  releases,
+  repository: {
+    firstCommit: 'b5b9c087d461599e25080b9963a53c15fd72e9e6',
+    owner: 'inyono',
+    repo: 'changelog'
+  }
+})
+\`\`\`
+          `,
+        ],
+      },
     ],
   })
 
-  await writeFile(path.join(__dirname, '..', 'CHANGELOG.md'), content)
+  await fs.promises.writeFile(
+    path.join(__dirname, '..', 'CHANGELOG.md'),
+    content
+  )
 }
