@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.4.0](https://github.com/inyono/changelog/compare/v0.3.0..v0.4.0) - January 9, 2022
+
+### Breaking Changes
+
+- Drop Node v12 support.
+
+- `generateChangelog` now requires information about the GitHub repository, i.e.:
+
+  ```js
+  generateChangelog({
+    releases,
+    branch,
+    origin,
+  })
+  // becomes
+  generateChangelog({
+    releases,
+    repository: {
+      firstCommit: 'b5b9c087d461599e25080b9963a53c15fd72e9e6',
+      owner: 'inyono',
+      repo: 'changelog',
+    },
+  })
+  ```
+
 ## [v0.3.0](https://github.com/inyono/changelog/compare/v0.2.1..v0.3.0) - August 30, 2021
 
 ### Breaking Changes
