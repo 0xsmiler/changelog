@@ -1,7 +1,10 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { generateChangelog } from '../src'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 exec().then(() => {
   console.log('done')
@@ -99,6 +102,13 @@ generateChangelog({
 })
 \`\`\`
           `,
+        ],
+      },
+      {
+        tagName: 'v0.5.0',
+        date: '2022-03-10',
+        breakingChanges: [
+          'This package is now ESM only. [Learn more about ESM in this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).',
         ],
       },
     ],

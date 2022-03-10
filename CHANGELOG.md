@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.5.0](https://github.com/inyono/changelog/compare/v0.4.0..v0.5.0) - March 10, 2022
+
+### Breaking Changes
+
+- This package is now ESM only. [Learn more about ESM in this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+
 ## [v0.4.0](https://github.com/inyono/changelog/compare/v0.3.0..v0.4.0) - January 9, 2022
 
 ### Breaking Changes
