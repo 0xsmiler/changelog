@@ -116,6 +116,11 @@ generateChangelog({
         date: '2022-03-10',
         internal: ['Remove .npmignore.'],
       },
+      {
+        tagName: 'v0.5.2',
+        date: '2022-03-10',
+        fixed: ['Publish build output.'],
+      },
     ],
   })
 

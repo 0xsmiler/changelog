@@ -1,6 +1,6 @@
 {
   "name": "@inyono/changelog",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "homepage": "https://github.com/inyono/changelog",
   "bugs": {
     "url": "https://github.com/inyono/changelog/issues"
@@ -12,6 +12,9 @@
   "exports": "./dist/index.js",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "_prettier": "prettier .",
     "build": "rimraf dist && tsup src/index.ts --dts --format esm",
