@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.5.1](https://github.com/inyono/changelog/compare/v0.5.0..v0.5.1) - March 10, 2022
+
+### Internal
+
+- Remove .npmignore.
+
 ## [v0.5.0](https://github.com/inyono/changelog/compare/v0.4.0..v0.5.0) - March 10, 2022
 
 ### Breaking Changes
