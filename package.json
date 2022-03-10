@@ -1,6 +1,6 @@
 {
   "name": "@inyono/changelog",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "homepage": "https://github.com/inyono/changelog",
   "bugs": {
     "url": "https://github.com/inyono/changelog/issues"
@@ -9,12 +9,12 @@
   "license": "MIT",
   "author": "Jonas Keinholz <jonas@keinholz.dev>",
   "type": "module",
-  "exports": "./index.js",
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "_prettier": "prettier .",
-    "build": "rimraf dist && tsup src/index.ts --dts --format esm,cjs",
+    "build": "rimraf dist && tsup src/index.ts --dts --format esm",
     "changelog": "node --experimental-specifier-resolution=node --loader ts-node/esm scripts/changelog",
     "format": "yarn _prettier --write",
     "lint": "npm-run-all --parallel lint:prettier lint:tsc",
