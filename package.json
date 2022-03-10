@@ -10,7 +10,6 @@
   "author": "Jonas Keinholz <jonas@keinholz.dev>",
   "type": "module",
   "exports": "./dist/index.js",
-  "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
     "/dist"
